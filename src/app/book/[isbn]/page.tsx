@@ -1,8 +1,17 @@
+import { getBooks } from "@/api/get-books";
+import BookInfo from "@/components/book-info";
+
 export default async function BookDetailPage({
   params,
 }: {
   params: Promise<{ isbn: string }>;
 }) {
   const { isbn } = await params;
-  return <div>{isbn} 책 상세 페이지</div>;
+  const response = await getBooks(isbn);
+
+  return (
+    <div>
+      <BookInfo {...response.items[0]} />
+    </div>
+  );
 }
