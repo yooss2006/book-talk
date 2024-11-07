@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: "shopping-phinf.pstatic.net",
         pathname: "**",
       },
+      {
+        protocol: "http",
+        hostname: "k.kakaocdn.net",
+        pathname: "**",
+      },
     ],
   },
 };
