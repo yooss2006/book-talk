@@ -1,3 +1,4 @@
+import LogoutButton from "@/components/logout-button";
 import ProfileIcon from "@/components/profile-icon";
 
 export default function Layout({
@@ -11,6 +12,7 @@ export default function Layout({
     <div>
       <header>
         <ProfileIcon />
+        <LogoutButton />
       </header>
       <main>
         {modal}
