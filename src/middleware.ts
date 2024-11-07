@@ -17,7 +17,7 @@ export const applyMiddlewareSupabaseClient = async (request: NextRequest) => {
   } = await supabase.auth.getUser();
 
   if (
-    pathname === "/login" ||
+    ["/login", "/auth/callback"].includes(pathname) ||
     pathname.startsWith("/_next") ||
     pathname.startsWith("/static")
   ) {
@@ -26,7 +26,7 @@ export const applyMiddlewareSupabaseClient = async (request: NextRequest) => {
 
   if (!user) {
     const loginUrl = new URL("/login", request.url);
-    loginUrl.searchParams.set("redirectedFrom", pathname);
+    loginUrl.searchParams.set("next", pathname);
     return NextResponse.redirect(loginUrl);
   }
 
