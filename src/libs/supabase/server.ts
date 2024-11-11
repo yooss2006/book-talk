@@ -5,6 +5,7 @@ import {
   SUPABASE_SERVICE_ROLE,
   SUPABASE_URL,
 } from "@/config/env";
+import { Database } from "@/model/types-db";
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { cookies } from "next/headers";
 
@@ -13,7 +14,7 @@ export const createServerSupabaseClient = async (
   admin: boolean = false
 ) => {
   const cookieObject = await cookieStore;
-  return createServerClient(
+  return createServerClient<Database>(
     SUPABASE_URL,
     admin ? SUPABASE_SERVICE_ROLE : SUPABASE_ANON_KEY,
     {
@@ -25,7 +26,7 @@ export const createServerSupabaseClient = async (
           try {
             cookieObject.set({ name, value, ...options });
           } catch (error) {
-            console.log(`Error Message: Supabase Server Set ${error}`);
+            console.error(`Error Message: Supabase Server Set ${error}`);
           }
         },
         remove(name: string, options: CookieOptions) {
