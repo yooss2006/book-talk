@@ -1,3 +1,5 @@
+import MessageList from "@/components/message";
+import MessageProvider from "@/components/message-provider";
 import SendMessageForm from "@/components/send-message-form";
 
 export default async function ChatDetailPage({
@@ -9,7 +11,9 @@ export default async function ChatDetailPage({
   return (
     <div>
       <header>채팅방 {id} 페이지</header>
-      <div>채팅 메시지s</div>
+      <MessageProvider>
+        <MessageList chatRoomId={id} />
+      </MessageProvider>
       <SendMessageForm />
     </div>
   );
