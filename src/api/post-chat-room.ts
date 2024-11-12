@@ -1,6 +1,7 @@
 import { createServerSupabaseClient } from "@/libs/supabase/server";
 
 type Payload = {
+  admin_user_id: string;
   title: string;
   description: string;
   isbn: string;
@@ -9,16 +10,9 @@ type Payload = {
 export const postChatRoom = async (payload: Payload) => {
   const supabase = await createServerSupabaseClient();
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
   const { data, error } = await supabase
     .from("chat_rooms")
-    .insert({
-      ...payload,
-      admin_user_id: user?.id,
-    })
+    .insert(payload)
     .select("*")
     .single();
 

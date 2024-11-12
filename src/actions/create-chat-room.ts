@@ -1,13 +1,21 @@
 "use server";
 
 import { postChatRoom } from "@/api/post-chat-room";
+import { createServerSupabaseClient } from "@/libs/supabase/server";
 
 export const createChatRoom = async (_: unknown, formData: FormData) => {
+  const supabase = await createServerSupabaseClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   const title = formData.get("title")?.toString();
   const description = formData.get("description")?.toString();
   const isbn = formData.get("isbn")?.toString();
+  const admin_user_id = user?.id;
 
-  if (!(title && description && isbn)) return null;
+  if (!(title && description && isbn && admin_user_id)) return null;
 
-  return await postChatRoom({ title, description, isbn });
+  return await postChatRoom({ title, description, isbn, admin_user_id });
 };
