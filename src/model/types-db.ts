@@ -9,6 +9,45 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      chat_messages: {
+        Row: {
+          author_id: string
+          chat_room_id: string
+          content: string
+          created_at: string | null
+          id: number
+        }
+        Insert: {
+          author_id: string
+          chat_room_id: string
+          content: string
+          created_at?: string | null
+          id?: number
+        }
+        Update: {
+          author_id?: string
+          chat_room_id?: string
+          content?: string
+          created_at?: string | null
+          id?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "chat_messages_author_id_fkey"
+            columns: ["author_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "chat_messages_chat_room_id_fkey"
+            columns: ["chat_room_id"]
+            isOneToOne: false
+            referencedRelation: "chat_rooms"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       chat_rooms: {
         Row: {
           admin_user_id: string
@@ -38,7 +77,24 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      users: {
+        Row: {
+          email: string | null
+          id: string | null
+          raw_user_meta_data: Json | null
+        }
+        Insert: {
+          email?: string | null
+          id?: string | null
+          raw_user_meta_data?: Json | null
+        }
+        Update: {
+          email?: string | null
+          id?: string | null
+          raw_user_meta_data?: Json | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       [_ in never]: never
