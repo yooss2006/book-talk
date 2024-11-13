@@ -1,5 +1,6 @@
 import { getBooks } from "@/api/get-books";
 import BookInfo from "@/components/book-info";
+import ChatRoomList from "@/components/chat-room-list";
 import CreateChatRoomButton from "@/components/create-chat-room-button";
 
 export default async function BookDetailPage({
@@ -13,6 +14,7 @@ export default async function BookDetailPage({
   return (
     <div>
       <BookInfo {...response.items[0]} />
+      <ChatRoomList isbn={isbn} />
       <CreateChatRoomButton />
     </div>
   );
