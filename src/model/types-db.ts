@@ -54,6 +54,7 @@ export type Database = {
           created_at: string | null
           description: string | null
           id: string
+          is_main_chat_room: boolean
           isbn: string
           title: string
         }
@@ -62,6 +63,7 @@ export type Database = {
           created_at?: string | null
           description?: string | null
           id?: string
+          is_main_chat_room?: boolean
           isbn: string
           title: string
         }
@@ -70,6 +72,7 @@ export type Database = {
           created_at?: string | null
           description?: string | null
           id?: string
+          is_main_chat_room?: boolean
           isbn?: string
           title?: string
         }

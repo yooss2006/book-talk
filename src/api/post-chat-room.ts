@@ -2,6 +2,7 @@ import { createServerSupabaseClient } from "@/libs/supabase/server";
 
 type Payload = {
   admin_user_id: string;
+  is_main_chat_room: boolean;
   title: string;
   description: string;
   isbn: string;

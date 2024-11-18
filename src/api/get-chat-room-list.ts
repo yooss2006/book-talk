@@ -10,7 +10,8 @@ export const getChatRoomList = async (isbn: string) => {
     .order("created_at", { ascending: true });
 
   if (chatRoomError) {
-    return [];
+    console.error(`getChatRoomList Error : ${chatRoomError.message}`);
+    throw chatRoomError;
   }
 
   return data;

@@ -21,11 +21,14 @@ function ChatRoomLink(
 
 export default async function ChatRoomList({ isbn }: Props) {
   const chatRoomList = await getChatRoomList(isbn);
+  const subChatRoomList = chatRoomList.filter(
+    (item) => !item.is_main_chat_room
+  );
   return (
     <div>
       <div>채팅방 목록</div>
       <ul>
-        {chatRoomList.map((chatRoom) => (
+        {subChatRoomList.map((chatRoom) => (
           <ChatRoomLink key={chatRoom.id} {...chatRoom} />
         ))}
       </ul>
