@@ -1,5 +1,4 @@
-import LogoutButton from "@/components/logout-button";
-import ProfileIcon from "@/components/profile-icon";
+import Header from "@/components/header";
 
 export default function Layout({
   children,
@@ -10,14 +9,9 @@ export default function Layout({
 }>) {
   return (
     <div>
-      <header>
-        <ProfileIcon />
-        <LogoutButton />
-      </header>
-      <main>
-        {modal}
-        {children}
-      </main>
+      <Header />
+      <main>{children}</main>
+      {modal}
     </div>
   );
 }
