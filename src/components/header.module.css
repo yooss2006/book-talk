@@ -3,11 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 5px #cdcdcd;
-}
-
-.title {
-  font-size: 1.25rem;
+  box-shadow: 0 2px 3px #cdcdcd;
 }
 
 .button_group {

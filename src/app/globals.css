@@ -88,6 +88,7 @@ html,
 body,
 #root {
   height: 100%;
+  overflow: hidden;
 }
 
 body {
@@ -101,6 +102,7 @@ h2,
 h3,
 h4,
 h5 {
+  font-size: 1.25rem;
   font-weight: 700;
 }
 
@@ -114,7 +116,7 @@ h5 {
 }
 
 main {
-  padding: 8px;
+  padding: 16px 8px;
 }
 
 .sr-only {

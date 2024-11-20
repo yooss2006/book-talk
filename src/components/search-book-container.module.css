@@ -1,0 +1,54 @@
+.search_book_container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: calc(100vh - 120px);
+  overflow: hidden;
+}
+
+.search_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.input {
+  padding: 8px;
+  flex: 1;
+}
+
+.submit_button {
+  padding: 8px 16px 8px 36px;
+  position: relative;
+  cursor: pointer;
+}
+
+.submit_button::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-image: url("/icon/favourite-book.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.guide_text {
+  margin-top: 4px;
+}
+
+.book_list {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: left;
+  overflow-y: auto;
+}

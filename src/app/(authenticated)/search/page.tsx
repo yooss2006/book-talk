@@ -1,10 +1,11 @@
 import SearchBookContainer from "@/components/search-book-container";
+import style from "./page.module.css";
 
 export default function SearchPage() {
   return (
-    <div>
-      <h2>책 검색</h2>
+    <section>
+      <h2 className={style.title}>도서 검색</h2>
       <SearchBookContainer />
-    </div>
+    </section>
   );
 }
