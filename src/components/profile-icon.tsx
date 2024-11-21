@@ -1,12 +1,19 @@
-import { createServerSupabaseClient } from "@/libs/supabase/server";
+"use client";
 import style from "./profile-icon.module.css";
 import Image from "next/image";
+import { createBrowserSupabaseClient } from "@/libs/supabase/client";
+import { useEffect, useState } from "react";
+import { User } from "@supabase/supabase-js";
 
-export default async function ProfileIcon() {
-  const supabase = await createServerSupabaseClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+export default function ProfileIcon() {
+  const [user, setUser] = useState<User | null>(null);
+  const supabase = createBrowserSupabaseClient();
+
+  useEffect(() => {
+    supabase.auth.getUser().then((res) => {
+      setUser(res.data.user);
+    });
+  }, [supabase.auth]);
 
   if (!user) return null;
 
