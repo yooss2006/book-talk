@@ -29,9 +29,11 @@ export default function SearchBookContainer() {
         <p className={style.guide_text}>검색 결과가 없습니다.</p>
       )}
       {state?.items && state.items.length > 0 && (
-        <ul className={style.book_list}>
+        <ul className={style.book_list} role="list">
           {state.items.map((item) => (
-            <BookLinkItem key={item.isbn} {...item} />
+            <li key={item.isbn}>
+              <BookLinkItem {...item} />
+            </li>
           ))}
         </ul>
       )}

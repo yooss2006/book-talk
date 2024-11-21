@@ -77,6 +77,11 @@ textarea:not([rows]) {
   scroll-margin-block: 5ex;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 @font-face {
   font-family: "Pretendard";
   src: url("/fonts/PretendardVariable.woff2") format("woff2");
@@ -98,10 +103,7 @@ body {
 }
 
 h1,
-h2,
-h3,
-h4,
-h5 {
+h2 {
   font-size: 1.25rem;
   font-weight: 700;
 }
