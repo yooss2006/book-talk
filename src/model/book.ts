@@ -1,5 +1,5 @@
 export interface ResponseSearchBook {
-  dispatch: number;
+  display: number;
   start: number;
   total: number;
   lastBuildDate: string;

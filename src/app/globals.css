@@ -92,8 +92,7 @@ a {
 html,
 body,
 #root {
-  height: 100%;
-  overflow: hidden;
+  height: 100vh;
 }
 
 body {
@@ -108,17 +107,14 @@ h2 {
   font-weight: 700;
 }
 
-.main {
-  height: 100%;
+.content {
   max-width: 600px;
+  height: 100vh;
   margin: 0 auto;
   padding: 8px 0;
   background-color: #ffffff;
+  box-sizing: border-box;
   box-shadow: #cdcdcd 0px 0px 8px;
-}
-
-main {
-  padding: 16px 8px;
 }
 
 .sr-only {
@@ -131,4 +127,8 @@ main {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+dialog {
+  overflow: hidden !important;
 }

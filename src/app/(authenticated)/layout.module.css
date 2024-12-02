@@ -1,0 +1,12 @@
+.page_container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.page_container .main {
+  flex: 1;
+  max-height: 100%;
+  padding: 16px 8px;
+  overflow: hidden;
+}

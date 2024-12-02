@@ -1,0 +1,31 @@
+.search_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.search_container .input {
+  padding: 8px;
+  flex: 1;
+}
+
+.search_container .submit_button {
+  padding: 8px 16px 8px 36px;
+  position: relative;
+  cursor: pointer;
+}
+
+.search_container .submit_button::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-image: url("/icon/search.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}

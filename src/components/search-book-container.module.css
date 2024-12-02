@@ -3,40 +3,6 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  max-height: calc(100vh - 120px);
-  overflow: hidden;
-}
-
-.search_container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-}
-
-.input {
-  padding: 8px;
-  flex: 1;
-}
-
-.submit_button {
-  padding: 8px 16px 8px 36px;
-  position: relative;
-  cursor: pointer;
-}
-
-.submit_button::before {
-  content: "";
-  position: absolute;
-  left: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-  background-image: url("/icon/favorite-book.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
 }
 
 .guide_text {
@@ -44,24 +10,15 @@
 }
 
 .book_list {
+  max-height: 704px;
   flex: 1;
-  min-height: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: left;
-  overflow-y: auto;
-}
-
-.book_list {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
   gap: 16px;
-  align-items: left;
-  overflow-y: auto;
+  overflow-y: scroll;
   scrollbar-width: thin;
   scrollbar-color: #536775 #f0f0f0;
 }

@@ -1,17 +1,25 @@
-import { NAVER_CLIENT_ID, NAVER_CLIENT_SECRET, NAVER_URL } from "@/config/env";
 import { ResponseSearchBook } from "@/model/book";
 
-export const getBooks = async (query: string) => {
-  const response = await fetch(`${NAVER_URL}/search/book.json?query=${query}`, {
-    headers: {
-      "X-Naver-Client-Id": NAVER_CLIENT_ID,
-      "X-Naver-Client-Secret": NAVER_CLIENT_SECRET,
-    },
-  });
+type Params = {
+  q: string;
+  page?: number;
+  signal?: AbortSignal;
+};
 
-  if (!response.ok) {
-    throw new Error();
+export const getBooks = async ({ q, page = 1, signal }: Params) => {
+  try {
+    const response = await fetch(`/api/search?q=${q}&page=${page}`, {
+      signal,
+    });
+
+    if (!response.ok) {
+      throw new Error();
+    }
+
+    return (await response.json()) as ResponseSearchBook;
+  } catch (error: unknown) {
+    if (error instanceof Error && error.name !== "AbortError") {
+      console.error("데이터 로드 실패:", error);
+    }
   }
-
-  return (await response.json()) as ResponseSearchBook;
 };

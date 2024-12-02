@@ -1,4 +1,5 @@
 import Header from "@/components/header";
+import style from "./layout.module.css";
 
 export default function Layout({
   children,
@@ -8,9 +9,9 @@ export default function Layout({
   modal: React.ReactNode;
 }>) {
   return (
-    <div>
+    <div className={style.page_container}>
       <Header />
-      <main>{children}</main>
+      <main className={style.main}>{children}</main>
       {modal}
     </div>
   );

@@ -10,7 +10,7 @@ export default async function BookDetailPage({
   params: Promise<{ isbn: string }>;
 }) {
   const { isbn } = await params;
-  const response = await getBooks(isbn);
+  const response = await getBooks({ q: isbn });
 
   return (
     <div>
