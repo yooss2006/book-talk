@@ -15,14 +15,12 @@ export default function ProfileIcon() {
     });
   }, [supabase.auth]);
 
-  if (!user) return null;
-
   return (
     <Image
-      src={user.user_metadata?.avatar_url ?? ""}
+      src={user?.user_metadata?.avatar_url || "/icon/user.svg"}
       width={40}
       height={40}
-      alt={user.user_metadata?.full_name}
+      alt={user?.user_metadata?.full_name || "프로필 이미지"}
       className={style.image}
     />
   );
