@@ -33,7 +33,7 @@ export default function MessageProvider({ children }: Props) {
     return () => {
       channel.unsubscribe();
     };
-  }, [supabase]);
+  }, [router, supabase]);
 
   return children;
 }

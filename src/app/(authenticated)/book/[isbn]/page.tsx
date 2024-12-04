@@ -12,6 +12,8 @@ export default async function BookDetailPage({
   const { isbn } = await params;
   const response = await getBooks({ q: isbn });
 
+  if (!response) return null;
+
   return (
     <div>
       <BookInfo {...response.items[0]} />

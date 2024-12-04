@@ -61,7 +61,6 @@ export default function SearchBookContainer() {
 
   useEffect(() => {
     if (!q) return;
-    console.log("여기!");
 
     setNextPage(1);
     setItems([]);
