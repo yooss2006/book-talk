@@ -1,8 +1,10 @@
-import { getBooks } from "@/api/get-books";
+import { getNaverBooks } from "@/api/get-naver-books";
 import BookInfo from "@/components/book-info";
 import ChatRoomList from "@/components/chat-room-list";
 import CreateChatRoomButton from "@/components/create-chat-room-button";
-import MainChatRoomLink from "@/components/main-chat-room-link";
+import { ResponseSearchBook } from "@/model/book";
+
+import style from "./page.module.css";
 
 export default async function BookDetailPage({
   params,
@@ -10,14 +12,17 @@ export default async function BookDetailPage({
   params: Promise<{ isbn: string }>;
 }) {
   const { isbn } = await params;
-  const response = await getBooks({ q: isbn });
+  const response = await getNaverBooks({ q: isbn });
 
-  if (!response) return null;
+  if (!response.ok) {
+    throw new Error("에러");
+  }
+
+  const book = ((await response.json()) as ResponseSearchBook).items[0];
 
   return (
-    <div>
-      <BookInfo {...response.items[0]} />
-      <MainChatRoomLink isbn={isbn} book={response.items[0]} />
+    <div className={style.container}>
+      <BookInfo {...book} />
       <ChatRoomList isbn={isbn} />
       <CreateChatRoomButton />
     </div>

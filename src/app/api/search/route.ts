@@ -1,4 +1,4 @@
-import { NAVER_CLIENT_ID, NAVER_CLIENT_SECRET, NAVER_URL } from "@/config/env";
+import { getNaverBooks } from "@/api/get-naver-books";
 import { ResponseSearchBook } from "@/model/book";
 import { NextResponse } from "next/server";
 export async function GET(request: Request) {
@@ -9,15 +9,7 @@ export async function GET(request: Request) {
   const display = 10;
   const start = (page - 1) * display + 1;
 
-  const response = await fetch(
-    `${NAVER_URL}/search/book.json?query=${q}&start=${start}&display=${display}`,
-    {
-      headers: {
-        "X-Naver-Client-Id": NAVER_CLIENT_ID,
-        "X-Naver-Client-Secret": NAVER_CLIENT_SECRET,
-      },
-    }
-  );
+  const response = await getNaverBooks({ q, start, display });
 
   if (!response.ok) {
     return new NextResponse("Naver Book API Error", { status: 500 });
