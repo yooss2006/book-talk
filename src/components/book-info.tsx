@@ -8,7 +8,7 @@ export default function BookInfo(book: Book) {
   const { title, author, publisher, image, pubdate, isbn, description } = book;
 
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       <Image
         className={styles.image}
         src={image}
@@ -29,6 +29,6 @@ export default function BookInfo(book: Book) {
       </dl>
       <pre className={styles.description}>{description}</pre>
       <MainChatRoomLink isbn={isbn} book={book} />
-    </div>
+    </section>
   );
 }

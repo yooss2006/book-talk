@@ -1,7 +1,6 @@
 import { getNaverBooks } from "@/api/get-naver-books";
 import BookInfo from "@/components/book-info";
 import ChatRoomList from "@/components/chat-room-list";
-import CreateChatRoomButton from "@/components/create-chat-room-button";
 import { ResponseSearchBook } from "@/model/book";
 
 import style from "./page.module.css";
@@ -24,7 +23,6 @@ export default async function BookDetailPage({
     <div className={style.container}>
       <BookInfo {...book} />
       <ChatRoomList isbn={isbn} />
-      <CreateChatRoomButton />
     </div>
   );
 }

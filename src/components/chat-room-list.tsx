@@ -2,6 +2,9 @@ import { getChatRoomList } from "@/api/get-chat-room-list";
 import { Database } from "@/model/types-db";
 import Link from "next/link";
 import React from "react";
+import CreateChatRoomButton from "./create-chat-room-button";
+
+import style from "./chat-room-list.module.css";
 
 type Props = {
   isbn: string;
@@ -25,13 +28,16 @@ export default async function ChatRoomList({ isbn }: Props) {
     (item) => !item.is_main_chat_room
   );
   return (
-    <div>
-      <div>채팅방 목록</div>
+    <section>
+      <header className={style.header}>
+        <h2>다른 채팅방 목록</h2>
+        <CreateChatRoomButton />
+      </header>
       <ul>
         {subChatRoomList.map((chatRoom) => (
           <ChatRoomLink key={chatRoom.id} {...chatRoom} />
         ))}
       </ul>
-    </div>
+    </section>
   );
 }

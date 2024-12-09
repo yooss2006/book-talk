@@ -7,18 +7,18 @@
   margin: 0 auto;
   padding: 8px 16px;
   display: inline-block;
-  font-weight: bold;
+  font-weight: 500;
   color: #fff;
-  background-color: #007bff;
+  background-color: #4a90e2;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   text-align: center;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .button:hover {
-  background-color: #0056b3;
+  background: #357abd;
 }
 
 .button:active {

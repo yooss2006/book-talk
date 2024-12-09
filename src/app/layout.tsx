@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { ToastContainer } from "react-toastify";
 import "./globals.css";
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata: Metadata = {
   title: "Book Talk",
@@ -16,6 +18,7 @@ export default function RootLayout({
       <body>
         <div className="content">{children}</div>
         <div id="modal-root"></div>
+        <ToastContainer />
       </body>
     </html>
   );
