@@ -15,9 +15,9 @@ function ChatRoomLink(
 ) {
   const { title, description, id } = props;
   return (
-    <Link href={`/chat/${id}`}>
-      <div>제목 : {title}</div>
-      <div>내용 : {description}</div>
+    <Link className={style.chatRoomLink} href={`/chat/${id}`}>
+      <div className={style.chatRoomTitle}>제목 : {title}</div>
+      <div className={style.chatRoomDescription}>내용 : {description}</div>
     </Link>
   );
 }
@@ -33,7 +33,7 @@ export default async function ChatRoomList({ isbn }: Props) {
         <h2>다른 채팅방 목록</h2>
         <CreateChatRoomButton />
       </header>
-      <ul>
+      <ul className={style.chatRoomList}>
         {subChatRoomList.map((chatRoom) => (
           <ChatRoomLink key={chatRoom.id} {...chatRoom} />
         ))}

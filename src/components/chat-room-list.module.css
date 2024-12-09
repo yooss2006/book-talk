@@ -1,5 +1,50 @@
 .header {
+  margin-bottom: 24px;
+  padding: 16px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+.header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #333;
+}
+
+.chatRoomList {
+  margin: 0;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chatRoomLink {
+  padding: 16px 20px;
+  margin: 0;
+  display: block;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  background-color: #f9f9f9;
+}
+.chatRoomLink:hover {
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chatRoomTitle {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.chatRoomDescription {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
 }
