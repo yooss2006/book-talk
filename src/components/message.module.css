@@ -1,0 +1,83 @@
+.container {
+  height: 100%;
+  padding: 16px;
+  display: flex;
+  flex-direction: column-reverse;
+  border-radius: 8px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #3498db #f0f0f0;
+  border: 1px solid #e0e0e0;
+  background-color: #f9f9f9;
+}
+
+.container::-webkit-scrollbar {
+  width: 10px;
+}
+.container::-webkit-scrollbar-thumb {
+  background-color: #3498db;
+  border-radius: 5px;
+}
+.container:-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+
+.messageList {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.message {
+  max-width: 80%;
+  padding: 8px 16px;
+  border-radius: 12px;
+}
+
+.message + .message {
+  margin-top: 8px;
+}
+
+.myMessage {
+  margin-left: auto;
+  background-color: #4a90e2;
+  color: white;
+}
+
+.myMessage .time {
+  text-align: right;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.otherMessage {
+  background-color: #f0f0f0;
+  color: #333;
+  margin-right: auto;
+}
+
+.otherMessage .time {
+  color: #999;
+}
+
+.messageContent {
+  min-width: 80px;
+  position: relative;
+}
+
+.author {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.content {
+  line-height: 1.5;
+  word-break: break-word;
+  margin-bottom: 4px;
+}
+
+.time {
+  font-size: 0.75rem;
+  margin-top: 2px;
+}
