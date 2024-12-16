@@ -5,6 +5,8 @@ import SendMessageForm from "@/components/send-message-form";
 
 import styles from "./page.module.css";
 import Description from "@/components/description";
+import { createServerSupabaseClient } from "@/libs/supabase/server";
+import { getAllMessages } from "@/api/get-all-messages";
 
 export default async function ChatDetailPage({
   params,
@@ -12,7 +14,16 @@ export default async function ChatDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
+  const supabase = await createServerSupabaseClient();
+
   const chatRoom = await getChatRoomById(id);
+  const messages = await getAllMessages(id);
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) return null;
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -23,7 +34,7 @@ export default async function ChatDetailPage({
       <div className={styles.chatContainer}>
         <div className={styles.messageArea}>
           <MessageProvider>
-            <MessageList chatRoomId={id} />
+            <MessageList messages={messages} userId={user.id} />
           </MessageProvider>
         </div>
         <SendMessageForm />

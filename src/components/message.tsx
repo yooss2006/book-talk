@@ -1,17 +1,16 @@
+"use client";
+
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 
-import { getAllMessages } from "@/api/get-all-messages";
-import { createServerSupabaseClient } from "@/libs/supabase/server";
 import { Database } from "@/model/types-db";
 
 import styles from "./message.module.css";
+import { useEffect, useRef } from "react";
 
-export type Message = Database["public"]["Tables"]["chat_messages"]["Row"] & {
-  userId: string;
-};
+export type Message = Database["public"]["Tables"]["chat_messages"]["Row"];
 
-function Message(props: Message) {
+function Message(props: Message & { userId: string }) {
   const { content, userId: user_id, author_id, created_at } = props;
   const isMyMessage = user_id === author_id;
 
@@ -35,24 +34,33 @@ function Message(props: Message) {
 }
 
 type Props = {
-  chatRoomId: string;
+  messages: Array<Message>;
+  userId: string;
 };
 
-export default async function MessageList({ chatRoomId }: Props) {
-  const supabase = await createServerSupabaseClient();
-  const messages = await getAllMessages(chatRoomId);
+export default function MessageList({ messages, userId }: Props) {
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  useEffect(() => {
+    const container = containerRef.current;
 
-  if (!user) return null;
+    if (container && messages.at(-1)?.author_id === userId) {
+      const isAtBottom = container.scrollTop === 0;
+
+      if (!isAtBottom) {
+        containerRef.current.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+    }
+  }, [messages, userId]);
 
   return (
-    <div className={styles.container}>
+    <div ref={containerRef} className={styles.container}>
       <ul className={styles.messageList}>
         {messages.map((message) => (
-          <Message key={message.id} {...message} userId={user.id} />
+          <Message key={message.id} {...message} userId={userId} />
         ))}
       </ul>
     </div>

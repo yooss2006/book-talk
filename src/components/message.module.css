@@ -5,6 +5,8 @@
   flex-direction: column-reverse;
   border-radius: 8px;
   overflow-y: auto;
+  scroll-behavior: smooth;
+  transition: scroll-top 0.1s ease-in-out;
   scrollbar-width: thin;
   scrollbar-color: #3498db #f0f0f0;
   border: 1px solid #e0e0e0;
