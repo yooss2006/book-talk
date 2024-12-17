@@ -5,7 +5,7 @@ export const getAllMessages = async (chatRoomId: string) => {
 
   const { data, error: getMessagesError } = await supabase
     .from("chat_messages")
-    .select("*")
+    .select("*, users(*)")
     .or(`chat_room_id.eq.${chatRoomId}`)
     .order("created_at", { ascending: true });
 

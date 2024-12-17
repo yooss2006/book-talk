@@ -1,17 +1,14 @@
-"use client";
-
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 
-import { Database } from "@/model/types-db";
-
 import styles from "./message.module.css";
-import { useEffect, useRef } from "react";
-
-export type Message = Database["public"]["Tables"]["chat_messages"]["Row"];
+import type { Message, UserMetadata } from "@/model/message";
+import Image from "next/image";
 
 function Message(props: Message & { userId: string }) {
-  const { content, userId: user_id, author_id, created_at } = props;
+  const { content, userId: user_id, author_id, created_at, users } = props;
+  const { avatar_url, full_name } =
+    (users?.raw_user_meta_data as UserMetadata) || {};
   const isMyMessage = user_id === author_id;
 
   const formattedTime = format(new Date(created_at ?? ""), "a h:mm", {
@@ -25,9 +22,19 @@ function Message(props: Message & { userId: string }) {
       }`}
     >
       <div className={styles.messageContent}>
-        <div className={styles.author}>{isMyMessage ? "나" : "남"}</div>
-        <div className={styles.content}>{content}</div>
-        <div className={styles.time}>{formattedTime}</div>
+        <Image
+          src={avatar_url}
+          alt={full_name}
+          width={30}
+          height={30}
+          objectFit="cover"
+          className={styles.avatar}
+        />
+        <div>
+          <div className={styles.author}>{isMyMessage ? "나" : full_name}</div>
+          <div className={styles.content}>{content}</div>
+          <div className={styles.time}>{formattedTime}</div>
+        </div>
       </div>
     </li>
   );
@@ -39,30 +46,11 @@ type Props = {
 };
 
 export default function MessageList({ messages, userId }: Props) {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const container = containerRef.current;
-
-    if (container && messages.at(-1)?.author_id === userId) {
-      const isAtBottom = container.scrollTop === 0;
-
-      if (!isAtBottom) {
-        containerRef.current.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      }
-    }
-  }, [messages, userId]);
-
   return (
-    <div ref={containerRef} className={styles.container}>
-      <ul className={styles.messageList}>
-        {messages.map((message) => (
-          <Message key={message.id} {...message} userId={userId} />
-        ))}
-      </ul>
-    </div>
+    <ul className={styles.messageList}>
+      {messages.map((message) => (
+        <Message key={message.id} {...message} userId={userId} />
+      ))}
+    </ul>
   );
 }

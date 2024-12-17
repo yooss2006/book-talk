@@ -7,6 +7,7 @@ import styles from "./page.module.css";
 import Description from "@/components/description";
 import { createServerSupabaseClient } from "@/libs/supabase/server";
 import { getAllMessages } from "@/api/get-all-messages";
+import MessageContainer from "@/components/message-container";
 
 export default async function ChatDetailPage({
   params,
@@ -34,7 +35,9 @@ export default async function ChatDetailPage({
       <div className={styles.chatContainer}>
         <div className={styles.messageArea}>
           <MessageProvider>
-            <MessageList messages={messages} userId={user.id} />
+            <MessageContainer messages={messages} userId={user.id}>
+              <MessageList messages={messages} userId={user.id} />
+            </MessageContainer>
           </MessageProvider>
         </div>
         <SendMessageForm />

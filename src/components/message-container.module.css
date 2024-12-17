@@ -1,0 +1,25 @@
+.container {
+  height: 100%;
+  padding: 16px;
+  display: flex;
+  flex-direction: column-reverse;
+  border-radius: 8px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  transition: scroll-top 0.1s ease-in-out;
+  scrollbar-width: thin;
+  scrollbar-color: #3498db #f0f0f0;
+  border: 1px solid #e0e0e0;
+  background-color: #f9f9f9;
+}
+
+.container::-webkit-scrollbar {
+  width: 10px;
+}
+.container::-webkit-scrollbar-thumb {
+  background-color: #3498db;
+  border-radius: 5px;
+}
+.container:-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
