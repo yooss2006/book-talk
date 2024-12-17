@@ -8,12 +8,12 @@ export interface ResponseSearchBook {
 
 export interface Book {
   title: string;
-  link: string;
+  link: string | null;
   image: string;
   author: string;
-  discount: string;
-  publisher: string;
-  pubdate: string;
+  discount: string | null;
+  publisher: string | null;
+  pubdate: string | null;
   isbn: string;
-  description: string;
+  description: string | null;
 }

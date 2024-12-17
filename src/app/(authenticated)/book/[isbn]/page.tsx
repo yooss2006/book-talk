@@ -1,9 +1,8 @@
-import { getNaverBooks } from "@/api/get-naver-books";
 import BookInfo from "@/components/book-info";
 import ChatRoomList from "@/components/chat-room-list";
-import { ResponseSearchBook } from "@/model/book";
 
 import style from "./page.module.css";
+import { getBook } from "@/api/get-book";
 
 export default async function BookDetailPage({
   params,
@@ -11,13 +10,9 @@ export default async function BookDetailPage({
   params: Promise<{ isbn: string }>;
 }) {
   const { isbn } = await params;
-  const response = await getNaverBooks({ q: isbn });
+  const book = await getBook(isbn);
 
-  if (!response.ok) {
-    throw new Error("에러");
-  }
-
-  const book = ((await response.json()) as ResponseSearchBook).items[0];
+  if (!book) return "책 정보가 없습니다.";
 
   return (
     <div className={style.container}>

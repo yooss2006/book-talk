@@ -15,7 +15,7 @@ export default function KakaoLoginButton() {
       provider: "kakao",
       options: {
         redirectTo: PROD_URL
-          ? `https://${PROD_URL}/auth/callback?next=${next}`
+          ? `${PROD_URL}/auth/callback?next=${next}`
           : `http://localhost:3000/auth/callback?next=${next}`,
       },
     });
