@@ -17,6 +17,14 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+.button .title {
+  display: inline-block;
+  max-width: 95%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .button:hover {
   background: #357abd;
 }

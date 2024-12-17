@@ -35,7 +35,7 @@ function CreateChatRoomModal({ closeModal }: ModalProps) {
 
   useEffect(() => {
     if (state?.id) {
-      router.replace(`/chat/${state.id}`);
+      router.push(`/chat/${state.id}`);
     }
   }, [router, state]);
 
