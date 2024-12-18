@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import BookLinkItem from "./book-link-item";
 
-import style from "./search-book-container.module.css";
+import styles from "./search-book-container.module.css";
 import { Book, ResponseSearchBook } from "@/model/book";
 import Search from "./search";
 import { useSearchParams } from "next/navigation";
@@ -103,14 +103,14 @@ export default function SearchBookContainer() {
   }, [nextPage, q, lastSearchItem, isLoading, loadedPages]);
 
   return (
-    <div className={style.search_book_container}>
+    <div className={styles.search_book_container}>
       <Search />
       {items.length === 0 && !isLoading && (
-        <p className={style.guide_text}>검색 결과가 없습니다.</p>
+        <p className={styles.guide_text}>검색 결과가 없습니다.</p>
       )}
       {items.length > 0 && (
         <>
-          <ul className={style.book_list} role="list">
+          <ul className={styles.book_list} role="list">
             {items.map((item, index) => {
               const isEvery7thIndex = (index + 1) % 10 === 8;
               return (

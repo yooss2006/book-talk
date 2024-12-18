@@ -1,11 +1,11 @@
 import { ResponseSearchBook } from "@/model/book";
-import { getSavedBooks } from "./get-saved-books";
+import { getSavedBookByIsbn } from "./get-saved-books";
 import { postBook } from "./post-book";
 import { getNaverBooks } from "./get-naver-books";
 
 export const getBook = async (isbn: string) => {
   try {
-    const data = await getSavedBooks(isbn);
+    const data = await getSavedBookByIsbn(isbn);
     if (data.length > 0) {
       return data[0];
     }

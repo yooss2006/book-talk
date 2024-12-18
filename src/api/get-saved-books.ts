@@ -1,28 +1,34 @@
 import { createServerSupabaseClient } from "@/libs/supabase/server";
 
-export const getSavedBooks = async (isbn?: string) => {
+export const getSavedBookByIsbn = async (isbn: string) => {
   const supabase = await createServerSupabaseClient();
 
-  if (isbn) {
-    const { data, error } = await supabase
-      .from("books")
-      .select("*")
-      .or(`isbn.eq.${isbn}`);
+  const { data, error } = await supabase
+    .from("books")
+    .select("*")
+    .or(`isbn.eq.${isbn}`);
 
-    if (error) {
-      console.error(`getSavedBooks Error : ${error.message}`);
-      throw error;
-    }
-
-    return data;
-  } else {
-    const { data, error } = await supabase.from("books").select("*");
-
-    if (error) {
-      console.error(`getSavedBooks Error : ${error.message}`);
-      throw error;
-    }
-
-    return data;
+  if (error) {
+    console.error(`getSavedBooks Error : ${error.message}`);
+    throw error;
   }
+
+  return data;
+};
+
+export const getSavedBooks = async () => {
+  const supabase = await createServerSupabaseClient();
+
+  const { data, error } = await supabase
+    .from("books")
+    .select("*")
+    .order("created_at", { ascending: false })
+    .limit(6);
+
+  if (error) {
+    console.error(`getSavedBooks Error : ${error.message}`);
+    throw error;
+  }
+
+  return data;
 };
