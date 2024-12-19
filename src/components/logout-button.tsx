@@ -3,6 +3,8 @@
 import { createBrowserSupabaseClient } from "@/libs/supabase/client";
 import { useRouter } from "next/navigation";
 
+import styles from "./logout-button.module.css";
+
 export default function LogoutButton() {
   const supabase = createBrowserSupabaseClient();
   const router = useRouter();
@@ -16,5 +18,9 @@ export default function LogoutButton() {
     }
   };
 
-  return <button onClick={logout}>로그아웃</button>;
+  return (
+    <button onClick={logout} className={styles.logoutButton}>
+      로그아웃
+    </button>
+  );
 }
