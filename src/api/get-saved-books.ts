@@ -23,7 +23,7 @@ export const getSavedBooks = async () => {
     .from("books")
     .select("*")
     .order("created_at", { ascending: false })
-    .limit(6);
+    .limit(5);
 
   if (error) {
     console.error(`getSavedBooks Error : ${error.message}`);
