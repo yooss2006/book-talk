@@ -30,6 +30,7 @@ export default function SocialLoginButton({ type }: Props) {
   const searchParams = useSearchParams();
   const next = searchParams.get("next") ?? "/";
   const socialTypeObj = SOCIAL_TYPE[type];
+  console.log(`${BASE_URL}, 'd'`);
 
   const login = async () => {
     const { error } = await supabase.auth.signInWithOAuth({
