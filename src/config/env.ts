@@ -1,4 +1,4 @@
-export const PROD_URL = process.env.NEXT_PUBLIC_PROD_URL as string;
+export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL as string;
 export const NAVER_URL = process.env.NEXT_PUBLIC_NAVER_URL as string;
 export const NAVER_CLIENT_ID = process.env.NAVER_CLIENT_ID as string;
 export const NAVER_CLIENT_SECRET = process.env.NAVER_CLIENT_SECRET as string;

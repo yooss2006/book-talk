@@ -1,6 +1,6 @@
 "use client";
 
-import { PROD_URL } from "@/config/env";
+import { BASE_URL } from "@/config/env";
 import { createBrowserSupabaseClient } from "@/libs/supabase/client";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
@@ -35,8 +35,8 @@ export default function SocialLoginButton({ type }: Props) {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: socialTypeObj.name as Provider,
       options: {
-        redirectTo: PROD_URL
-          ? `${PROD_URL}/auth/callback?next=${next}`
+        redirectTo: BASE_URL
+          ? `${BASE_URL}/auth/callback?next=${next}`
           : `http://localhost:3000/auth/callback?next=${next}`,
       },
     });
