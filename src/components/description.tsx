@@ -13,11 +13,6 @@ export default function Description({ text }: { text: string }) {
       onClick={() => setIsExpanded(!isExpanded)}
     >
       {text}
-      {text.length > 100 && (
-        <span className={styles.readMore}>
-          {isExpanded ? "접기" : "더보기"}
-        </span>
-      )}
     </p>
   );
 }
