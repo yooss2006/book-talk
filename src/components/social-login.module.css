@@ -1,13 +1,52 @@
 .socialButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
   width: 100%;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border-radius: 12px;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.socialButton[data-provider="kakao"] {
+  border: none;
+  background-color: #fee500;
+  color: #000000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.socialButton[data-provider="kakao"]:hover {
+  transform: translateY(-2px);
+  background-color: #fdd835;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.socialButton[data-provider="google"] {
+  border: 1px solid #dadce0;
+  background-color: white;
+  color: #3c4043;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.socialButton[data-provider="google"]:hover {
+  transform: translateY(-2px);
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.socialButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.socialButton img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }

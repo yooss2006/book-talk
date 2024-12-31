@@ -46,14 +46,18 @@ export default function SocialLoginButton({ type }: Props) {
     }
   };
   return (
-    <button onClick={login} className={styles.socialButton}>
+    <button
+      onClick={login}
+      className={styles.socialButton}
+      data-provider={socialTypeObj.name}
+    >
       <Image
         src={socialTypeObj.icon}
         alt={socialTypeObj.name}
         width={20}
         height={20}
       />
-      {socialTypeObj.name}로 계속하기
+      {socialTypeObj.name === "kakao" ? "카카오" : "구글"}로 계속하기
     </button>
   );
 }
